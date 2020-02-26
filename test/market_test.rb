@@ -52,13 +52,5 @@ class MarketTest < Minitest::Test
     assert_equal [@vendor1, @vendor3], @market.vendors_that_sell(@item1)
     assert_equal [@vendor2], @market.vendors_that_sell(@item4)
   end
-end
 
-# pry(main)> vendor1.potential_revenue
-# #=> 29.75
-#
-# pry(main)> vendor2.potential_revenue
-# #=> 345.00
-#
-# pry(main)> vendor3.potential_revenue
-# #=> 48.75
+end

@@ -17,4 +17,10 @@ class Vendor
       @inventory[item] += amount
     end
   end
+
+  def potential_revenue
+    @inventory.sum do |item, amount|
+      (item.price.delete("$").to_f * amount).round(2)
+    end
+  end
 end
