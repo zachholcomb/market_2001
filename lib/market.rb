@@ -1,9 +1,11 @@
+require 'date'
 class Market
-  attr_reader :name, :vendors
+  attr_reader :name, :vendors, :market_date
 
   def initialize(name)
     @name = name
     @vendors = []
+    @market_date = Date.today
   end
 
   def add_vendor(vendor)
@@ -58,4 +60,18 @@ class Market
       item.name
     end
   end
+
+  def date
+    if @market_date.month < 10
+      "#{@market_date.day}/0#{@market_date.month}/#{@market_date.year}"
+    elsif @market_date > 10
+    "#{@market_date.day}/#{@market_date.month}/#{@market_date.year}"
+    end
+  end
+
+  def sell(item, amount)
+    
+    return false if total_inventory[item].nil? || total_inventory[item][:quantity] < 0
+  end
+
 end
