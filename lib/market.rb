@@ -43,4 +43,10 @@ class Market
       acc
     end
   end
+
+  def overstocked_items
+    all_items_list.find_all do |item|
+      item_total(item) > 50 && vendors_that_sell(item).length >= 2
+    end
+  end
 end
