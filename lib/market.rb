@@ -22,4 +22,25 @@ class Market
     end
   end
 
+  def all_items_list
+    @vendors.flat_map do |vendor|
+      vendor.inventory.keys
+    end.uniq
+  end
+
+  def item_total(item)
+    @vendors.sum do |vendor|
+      vendor.check_stock(item)
+    end
+  end
+
+  def total_inventory
+    all_items_list.reduce({}) do |acc, item|
+      acc[item] = {
+        quantity: item_total(item),
+        vendors: vendors_that_sell(item)
+            }
+      acc
+    end
+  end
 end
