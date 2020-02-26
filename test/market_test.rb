@@ -107,18 +107,11 @@ class MarketTest < Minitest::Test
     assert_equal [@item1], @market.overstocked_items
   end
 
-  # def test_it_can_sort_all_market_items_alphabetically
-  #   @market.add_vendor(@vendor1)
-  #   @market.add_vendor(@vendor2)
-  #   @market.add_vendor(@vendor3)
-  #   assert_equal [@item4, @item1, @item3, @item2], @market.sorted_item_list
-  # end
-
-
+  def test_it_can_sort_all_market_items_alphabetically
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+    expected = ["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"]
+    assert_equal expected, @market.sorted_item_list
+  end
 end
-
-# pry(main).overstocked_items
-# #=> [#<Item:0x007f9c56740d48...>]
-#
-# pry(main)> market.sorted_item_list
-# #=> ["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"]

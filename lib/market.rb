@@ -49,4 +49,13 @@ class Market
       item_total(item) > 50 && vendors_that_sell(item).length >= 2
     end
   end
+
+  def sorted_item_list
+    items_sort = all_items_list.sort_by do |item|
+      item.name
+    end
+    items_sort.map do |item|
+      item.name
+    end
+  end
 end
